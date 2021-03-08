@@ -5,8 +5,30 @@
     <title>Pali :'( e Dispari</title>
 </head>
 <body>
+    <p id="palindroma"></p>
+
     <script>
-        
+        let word = prompt("Inserisci una parola");
+
+        check(word);
+
+        function check(a) {
+            let word = Array.from(a);
+            word.reverse();
+
+            let word1 = "";
+            let word2 = "";
+
+            for (let i = 0; i < a.length; i++) {
+                word1 += a[i].toLowerCase();
+                word2 += word[i].toLowerCase();
+            }
+
+            if (word1 === word2)
+                document.getElementById("palindroma").innerHTML = word1 + " &egrave; palindroma";
+            else
+                document.getElementById("palindroma").innerHTML = word1 + " non &egrave; palindroma";
+        }
     </script>
 </body>
 </html>
