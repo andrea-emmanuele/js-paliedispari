@@ -6,11 +6,15 @@
 </head>
 <body>
     <p id="palindroma"></p>
+    <hr>
+    <p id="selection"></p>
 
     <script>
         let word = prompt("Inserisci una parola");
-
         check(word);
+
+        let selection = prompt("Scrivi 1 per scegliere Pari o 2 per scegliere Dispari");
+        play(selection);
 
         function check(a) {
             let word = Array.from(a);
@@ -29,6 +33,57 @@
             else
                 document.getElementById("palindroma").innerHTML = word1 + " non &egrave; palindroma";
         }
+
+        function play(a) {
+            let selected;
+
+            switch (a) {
+                case "1": selected = "pari";
+                          break;
+                case "2": selected = "dispari";
+                          break;
+                default: document.getElementById("selection").innerHTML = "Seleziona o 1. Pari o 2. Dispari!";
+                         break;
+            }
+
+            if (selected) {
+                let yourNum = chooseNumber();
+                let pcNum = randomNumber();
+                let winner = sum(parseInt(yourNum), pcNum);
+
+                if (selected === winner)
+                    alert("Hai vinto!");
+                else
+                    alert("Hai perso!");
+            }
+        }
+
+        function chooseNumber() {
+            let yourNum = prompt("Scegli un numero da 1 a 5!");
+
+            if (yourNum > 5 || yourNum < 1) {
+                alert("Puoi inserisci solo un numero che va da 1 a 5!");
+            }
+            else {
+                return yourNum;
+            }
+        }
+
+        function randomNumber() {
+            return Math.floor(Math.random() * 5 + 1);
+        }
+
+        function sum(a, b) {
+            let sum = a + b;
+
+            alert("Somma = " + sum);
+
+            if (!(sum%2))
+                return "pari";
+            else
+                return "dispari";
+        }
+
     </script>
 </body>
 </html>
